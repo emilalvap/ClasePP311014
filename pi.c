@@ -90,5 +90,10 @@ int main(){
 }
 // compilation using gcc and openMp libraries
 // gcc -fopenmp -o x.c x
+/* El comportamiento de critical y atomic es bastante parecido, consistente en establecer un semaforo de 
+acceso a la variable.
+En el reduce es distinto, se ejecutan todos los hilos, que tienen una copia privada de la variable
+que cuando terminan todos los threads se realiza la acumulación. Este caso en particular puede originar
+acumulación de errores de redondeo.
 
 
