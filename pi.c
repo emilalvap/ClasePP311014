@@ -71,7 +71,7 @@ int pi_reduce ()
 #pragma omp parallel for reduction(+:sum) private(x) 
 	  for (i=1;i<= num_steps; i++){
 		  x = (i-0.5)*step;
-		  sum = sum + 4.0/(1.0+x*x);
+		  sum += 4.0/(1.0+x*x);
 	  }
 
 	  pi = step * sum;
@@ -95,5 +95,6 @@ acceso a la variable.
 En el reduce es distinto, se ejecutan todos los hilos, que tienen una copia privada de la variable
 que cuando terminan todos los threads se realiza la acumulación. Este caso en particular puede originar
 acumulación de errores de redondeo.
+*/
 
 
